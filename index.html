@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./pixel.js"></script>
+<script src="./fbpixel.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics="">
+<script src="./image-slot.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap');
+body{margin:0;background:#0D0D0D;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#55C6E0;text-decoration:none}
+a:hover{color:#7ED4E8}
+*{box-sizing:border-box}
+::selection{background:#55C6E0;color:#0D0D0D}
+.rg-scroll::-webkit-scrollbar{height:8px}
+.rg-scroll::-webkit-scrollbar-track{background:#0D0D0D}
+.rg-scroll::-webkit-scrollbar-thumb{background:#000;border-radius:4px}
+.rg-scroll{scrollbar-color:#000 #0D0D0D}
+</style>
+</helmet>
+
+<div style="background:#0D0D0D;color:#F5F5F5;width:100%">
+
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:rgba(13,13,13,.85);backdrop-filter:blur(8px)">
+    <div style="font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase">Raw Gravity</div>
+    <a href="#email-capture" style="display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:13px;font-weight:800;letter-spacing:.3px" style-hover="opacity:.88">
+      <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;padding:11px 20px;text-transform:lowercase">amazon</span>
+      <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;padding:11px 20px;white-space:nowrap">Buy Now on Amazon -25%</span>
+    </a>
+  </div>
+
+  <!-- BLOCK 1: HERO -->
+  <div style="position: relative; min-height: 900px; display: flex; flex-direction: column; overflow: hidden; background: #0D0D0D">
+    <img src="uploads/ChatGPT Image 25 серп. 2026 р., 14_31_18.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
+    
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg,#0D0D0D 0%,#0D0D0D 46%,rgba(13,13,13,.7) 54%,transparent 64%); left: -192px; top: 4px"></div>
+
+
+    <div style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; padding: 32px 56px 40px; max-width: 620px">
+      <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px;color:#55C6E0;font-weight:700;text-transform:uppercase">
+        Men's Performance Coffee
+      </div>
+      <h1 style="margin: 0; font-size: 58px; line-height: 1.02; font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; max-width: 560px">One cup<br>6 hours of focus<br>No refill required</h1>
+      <p style="margin:0;font-size:18px;line-height:1.5;color:#9A9A9A;max-width:420px;font-weight:400">Coffee you can drink for productive work and training.<br>No jitters, no stomach ache.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+        <div style="font-size:11px;letter-spacing:2px;color:#9A9A9A;text-transform:uppercase;font-weight:700">−25% offer expires in</div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <div style="background:linear-gradient(180deg,#1c1c1c,#141414);border:1px solid rgba(85,198,224,.25);border-radius:12px;padding:10px 16px;text-align:center;min-width:64px;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+            <div style="font-size:28px;font-weight:900;color:#55C6E0;line-height:1;font-variant-numeric:tabular-nums">{{ timerMin }}</div>
+            <div style="font-size:9px;letter-spacing:1.5px;color:#9A9A9A;margin-top:3px;text-transform:uppercase">Min</div>
+          </div>
+          <div style="font-size:22px;font-weight:800;color:#55C6E0">:</div>
+          <div style="background:linear-gradient(180deg,#1c1c1c,#141414);border:1px solid rgba(85,198,224,.25);border-radius:12px;padding:10px 16px;text-align:center;min-width:64px;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+            <div style="font-size:28px;font-weight:900;color:#55C6E0;line-height:1;font-variant-numeric:tabular-nums">{{ timerSec }}</div>
+            <div style="font-size:9px;letter-spacing:1.5px;color:#9A9A9A;margin-top:3px;text-transform:uppercase">Sec</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:2px">
+        <a href="#email-capture" style="display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:16px;font-weight:800;letter-spacing:.3px;width:fit-content" style-hover="opacity:.88">
+          <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;padding:16px 24px;text-transform:lowercase">amazon</span>
+          <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;padding:16px 28px">Buy Now on Amazon -25%</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="position:relative;z-index:1;display:flex;justify-content:flex-end;padding:0 56px 28px">
+      <div style="text-align:right">
+        <div style="font-size:11px;letter-spacing:2px;color:#9A9A9A;text-transform:uppercase;font-weight:700">Available on</div>
+        <div style="font-size:26px;font-weight:900;letter-spacing:-.5px;text-transform:uppercase;line-height:1.1">Amazon</div>
+        <div style="font-size:11px;letter-spacing:2px;color:#9A9A9A;text-transform:uppercase;font-weight:700">Worldwide ↗</div>
+      </div>
+    </div>
+
+    <div style="position: relative; z-index: 1; margin: 0 56px 40px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; backdrop-filter: blur(6px); display: grid; grid-template-columns: repeat(4,1fr)">
+      <div style="padding:26px 28px;display:flex;align-items:center;justify-content:center;gap:10px;border-right:1px solid rgba(255,255,255,.1)">
+        <span style="color:#55C6E0;font-size:18px">✦</span>
+        <div style="text-align:left">
+          <div style="font-size:26px;font-weight:900;color:#F5F5F5;line-height:1">1,000mg</div>
+          <div style="font-size:11px;letter-spacing:1.5px;color:#9A9A9A;margin-top:4px;text-transform:uppercase">Lion's Mane 10:1</div>
+        </div>
+      </div>
+      <div style="padding:26px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.1)">
+        <div style="font-size:26px;font-weight:900;color:#F5F5F5;line-height:1">~23mg</div>
+        <div style="font-size:11px;letter-spacing:1.5px;color:#9A9A9A;margin-top:4px;text-transform:uppercase">Caffeine</div>
+      </div>
+      <div style="padding:26px 28px;display:flex;align-items:center;justify-content:center;gap:10px;border-right:1px solid rgba(255,255,255,.1)">
+        <span style="color:#55C6E0;font-size:16px">⚡</span>
+        <div style="text-align:left">
+          <div style="font-size:26px;font-weight:900;color:#F5F5F5;line-height:1">3,000mg</div>
+          <div style="font-size:11px;letter-spacing:1.5px;color:#9A9A9A;margin-top:4px;text-transform:uppercase">Creatine</div>
+        </div>
+      </div>
+      <div style="padding:26px 28px;display:flex;align-items:center;justify-content:center;gap:10px">
+        <span style="color:#55C6E0;font-size:16px">☆</span>
+        <div style="text-align:left">
+          <div style="font-size:26px;font-weight:900;color:#F5F5F5;line-height:1">4.9★</div>
+          <div style="font-size:11px;letter-spacing:1.5px;color:#9A9A9A;margin-top:4px;text-transform:uppercase">2,847 reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: WHAT CHANGES -->
+  <div style="max-width: 1440px; margin: 0 auto; padding: 120px 64px">
+    <div style="text-align:center;max-width:680px;margin:0 auto 72px">
+      
+      <h2 style="margin: 0; font-size: 46px; font-weight: 800; text-transform: uppercase; letter-spacing: -.5px; line-height: 1.1">WHAT CHANGES with <br>Raw Gravity Coffee+</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
+      <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="5">
+        <div style="background:#0D0D0D;padding:44px 36px;display:flex;flex-direction:column;gap:20px">
+          <div style="width:56px;height:56px;border-radius:50%;background:rgba(85,198,224,.08);border:1px solid rgba(85,198,224,.2);display:flex;align-items:center;justify-content:center">
+            <div style="width:28px;height:28px" dangerouslySetInnerHTML="{{ b.icon }}"></div>
+          </div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;color:#F5F5F5">{{ b.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: REVIEWS -->
+  <div style="max-width:1440px;margin:0 auto;padding:120px 64px 0">
+    <div style="text-align:center;max-width:680px;margin:0 auto 56px">
+      <h2 style="margin:0;font-size:44px;font-weight:800;text-transform:uppercase;letter-spacing:-.5px;line-height:1.1">VERIFIED BY GUYS WHO ACTUALLY USE IT</h2>
+    </div>
+  </div>
+
+  <!-- CUSTOMER PHOTOS -->
+  <div style="max-width:1440px;margin:0 auto;padding:0 64px 56px">
+    <div class="rg-scroll" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
+      <sc-for list="{{ customerPhotoIds }}" as="pid" hint-placeholder-count="8">
+        <image-slot id="{{ pid }}" shape="rounded" radius="14" placeholder="Customer photo" style="flex:none;width:260px;height:320px;scroll-snap-align:start"></image-slot>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA: TIMER + BUTTON -->
+  <div style="max-width:1440px;margin:0 auto;padding:0 64px 80px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:11px;letter-spacing:2px;color:#9A9A9A;text-transform:uppercase;font-weight:700;text-align:center">−25% offer expires in</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="background:linear-gradient(180deg,#1c1c1c,#141414);border:1px solid rgba(85,198,224,.25);border-radius:12px;padding:10px 16px;text-align:center;min-width:64px;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+          <div style="font-size:28px;font-weight:900;color:#55C6E0;line-height:1;font-variant-numeric:tabular-nums">{{ timerMin }}</div>
+          <div style="font-size:9px;letter-spacing:1.5px;color:#9A9A9A;margin-top:3px;text-transform:uppercase">Min</div>
+        </div>
+        <div style="font-size:22px;font-weight:800;color:#55C6E0">:</div>
+        <div style="background:linear-gradient(180deg,#1c1c1c,#141414);border:1px solid rgba(85,198,224,.25);border-radius:12px;padding:10px 16px;text-align:center;min-width:64px;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+          <div style="font-size:28px;font-weight:900;color:#55C6E0;line-height:1;font-variant-numeric:tabular-nums">{{ timerSec }}</div>
+          <div style="font-size:9px;letter-spacing:1.5px;color:#9A9A9A;margin-top:3px;text-transform:uppercase">Sec</div>
+        </div>
+      </div>
+    </div>
+    <a href="#email-capture" style="display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:16px;font-weight:800" style-hover="opacity:.88">
+      <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;padding:18px 26px;text-transform:lowercase">amazon</span>
+      <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;padding:18px 30px">Buy Now on Amazon -25%</span>
+    </a>
+  </div>
+
+  <div style="max-width:1440px;margin:0 auto;padding:0 64px 120px">
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
+      <div style="background:#0D0D0D;padding:30px 26px;display:flex;flex-direction:column;gap:14px;height:340px">
+        <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+        <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">"I drink this before lifting and again mid-afternoon at my desk. No jitters, no stomach issues — just steady focus."</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <image-slot id="avatar-featured" shape="circle" style="width:56px;height:56px;flex:none" placeholder="Photo"></image-slot>
+          <div style="min-width:0">
+            <div style="font-size:13px;font-weight:700;white-space:nowrap">Ryan D., 33</div>
+            <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Product Manager &amp; weekend lifter</div>
+            <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
+          </div>
+        </div>
+      </div>
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+        <div style="background:#0D0D0D;padding:30px 26px;display:flex;flex-direction:column;gap:14px;height:340px">
+          <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+          <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">"{{ r.text }}"</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <image-slot id="avatar-{{ $index }}" shape="circle" style="width:56px;height:56px;flex:none" placeholder="Photo"></image-slot>
+            <div style="min-width:0">
+              <div style="font-size:13px;font-weight:700;white-space:nowrap">{{ r.name }}</div>
+              <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.role }}</div>
+              <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BLOCK 5: EMAIL CAPTURE -->
+  <div id="email-capture" style="background:#161616;padding:110px 64px">
+    <div style="max-width:560px;margin:0 auto;background:#0D0D0D;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:56px 48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+        <h2 style="margin:0;font-size:36px;font-weight:800;text-transform:uppercase;letter-spacing:-.5px;line-height:1.15">Get 25% off before your next cup</h2>
+        <p style="margin:0;font-size:16px;color:#9A9A9A">Enter your email. Code sent instantly.</p>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:10px 22px">
+        <span style="display:flex;align-items:baseline;gap:8px;font-size:16px">
+          <span style="color:#6b6b6b;text-decoration:line-through">$43.20</span>
+          <span style="color:#55C6E0;font-weight:800;font-size:22px">$32.40</span>
+        </span>
+        <span style="width:1px;height:18px;background:rgba(255,255,255,.15)"></span>
+        <span style="font-size:13px;color:#9A9A9A;display:flex;align-items:center;gap:6px">
+          Ends in <span style="color:#F5F5F5;font-weight:700;font-variant-numeric:tabular-nums">{{ timerMin }}:{{ timerSec }}</span>
+        </span>
+      </div>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:rgba(85,198,224,.12);border:1px solid #55C6E0;border-radius:14px;padding:22px 30px;font-size:16px;font-weight:600;color:#55C6E0">
+          ✓ Code sent to {{ emailValue }} — check your inbox.
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onsubmit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:10px;width:100%">
+          <input type="email" required="{{ true }}" placeholder="you@email.com" value="{{ emailValue }}" oninput="{{ handleEmailInput }}" style="width:100%;background:#161616;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:16px 22px;font-size:15px;color:#F5F5F5;font-family:Archivo,sans-serif;text-align:center">
+          <button type="submit" style="display:flex;align-items:stretch;border:none;border-radius:999px;overflow:hidden;padding:0;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;width:100%" style-hover="opacity:.88">
+            <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;justify-content:center;padding:16px 22px;text-transform:lowercase;white-space:nowrap;flex:none">amazon</span>
+            <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;justify-content:center;padding:16px 24px;white-space:nowrap;flex:1">Buy Now on Amazon -25%</span>
+          </button>
+        </form>
+      </sc-if>
+
+      <p style="margin:0;font-size:13px;color:#9A9A9A">No spam · No subscription required · Cancel anytime</p>
+
+      <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);width:100%;font-size:13px;color:#9A9A9A">
+        <span>🛡 30-day money-back</span><span>🚚 Free US shipping</span><span>🔒 Secure checkout</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0D0D0D;border-top:1px solid rgba(255,255,255,.08);padding:64px 64px 40px">
+    <div style="max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:20px;font-weight:800;letter-spacing:1px;text-transform:uppercase">Raw Gravity</div>
+          <a href="mailto:hello@rawgravity.com" style="font-size:14px;color:#9A9A9A">hello@rawgravity.com</a>
+          <div style="font-size:14px;color:#9A9A9A">Austin, TX</div>
+          <a href="#" style="font-size:14px;color:#9A9A9A;text-decoration:underline">Privacy Policy</a>
+        </div>
+        <a href="#email-capture" style="display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:15px;font-weight:800" style-hover="opacity:.88">
+          <span style="background:#161616;color:#F5F5F5;display:flex;align-items:center;padding:16px 24px;text-transform:lowercase">amazon</span>
+          <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;padding:16px 28px;white-space:nowrap">Buy Now on Amazon -25%</span>
+        </a>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,.08)"></div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">Non-GMO</span>
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">🇺🇸 Made in USA</span>
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">Real, gut-friendly ingredients</span>
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">Zero acidity formula</span>
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">Low-acid Arabica</span>
+        <span style="background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 18px;font-size:13px;color:#F5F5F5">No fillers</span>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:#6b6b6b">
+        <div>© 2026 Raw Gravity. All rights reserved.</div>
+        <div>Not a mushroom coffee. Dietary supplement — statements not evaluated by the FDA.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const ICON_BOLT = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M24 4 L11 25h9l-2 15 15-21h-9z" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+const ICON_TARGET = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><circle cx="22" cy="22" r="16"/><circle cx="22" cy="22" r="9"/><circle cx="22" cy="22" r="2" fill="#55C6E0"/></svg>`;
+const ICON_NOJITTER = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M8 22c3-6 6 6 9 0s6-6 9 0 6 6 9 0" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="22" r="18"/></svg>`;
+const ICON_LEAF = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M10 34C8 20 18 8 34 8c1 16-11 26-24 26z" stroke-linejoin="round"/><path d="M10 34c4-8 10-14 20-20" stroke-linecap="round"/></svg>`;
+const ICON_DUMBBELL = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><rect x="4" y="17" width="6" height="10" rx="1"/><rect x="34" y="17" width="6" height="10" rx="1"/><rect x="10" y="20" width="24" height="4" rx="1"/></svg>`;
+const ICON_CALM = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M22 6c8 6 12 12 12 18a12 12 0 0 1-24 0c0-6 4-12 12-18z" stroke-linejoin="round"/><path d="M17 26a5 5 0 0 0 10 0" stroke-linecap="round"/></svg>`;
+
+class Component extends DCLogic {
+  state = { email: '', submitted: false, secondsLeft: 3600 };
+
+  componentDidMount() {
+    const key = 'rg_deal_deadline';
+    let deadline = Number(localStorage.getItem(key));
+    if (!deadline || deadline < Date.now()) {
+      deadline = Date.now() + 3600 * 1000;
+      localStorage.setItem(key, String(deadline));
+    }
+    this._tick = () => {
+      const secs = Math.max(0, Math.round((deadline - Date.now()) / 1000));
+      this.setState({ secondsLeft: secs });
+    };
+    this._tick();
+    this._interval = setInterval(this._tick, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._interval); }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = String(this.state.email || '').trim();
+
+    if (!email) return;
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+
+      const source =
+        params.get('source')?.trim().toLowerCase() || 'direct';
+
+      const creative =
+        params.get('creative')?.trim() || 'unknown';
+
+      const AMAZON_URLS = {
+        tiktok:
+          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
+
+        meta:
+          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas',
+
+        klaviyo:
+          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas',
+
+        instagram:
+          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
+      };
+
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          landing: 'men3',
+          source,
+          creative
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Subscription failed');
+      }
+
+      this.setState({ submitted: true });
+
+      if (typeof window.rawGravityTrackTikTokLead === 'function') {
+        window.rawGravityTrackTikTokLead();
+      }
+
+      if (typeof window.rawGravityTrackMetaLead === 'function') {
+        window.rawGravityTrackMetaLead();
+      }
+
+      setTimeout(() => {
+        window.location.href =
+          AMAZON_URLS[source] ||
+          AMAZON_URLS.meta;
+      }, 1500);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Something went wrong. Please try again.');
+    }
+  };
+
+  renderVals() {
+    const s = this.state.secondsLeft;
+    const mm = String(Math.floor(s / 60)).padStart(2, '0');
+    const ss = String(s % 60).padStart(2, '0');
+    return {
+      timerMin: mm,
+      timerSec: ss,
+      benefits: [
+        { icon: { __html: ICON_BOLT }, text: 'Steady energy for 6+ hours — no spike, no crash' },
+        { icon: { __html: ICON_TARGET }, text: 'Sharper focus through deep work and training' },
+        { icon: { __html: ICON_NOJITTER }, text: 'No jitters, no racing heart — even on cup 2 or 3' },
+        { icon: { __html: ICON_LEAF }, text: 'No stomach discomfort — gentle on your gut, drink it any time' },
+        { icon: { __html: ICON_DUMBBELL }, text: 'Supports performance in and out of the gym, not just at your desk' },
+        { icon: { __html: ICON_CALM }, text: 'Lower cortisol, calmer nervous system — energy without the edge' },
+      ],
+      rows: [
+        { name: 'Creatine Monohydrate', ours: '3,000mg\nclinical dose for focus ', theirs: '0mg\nnone' },
+        { name: "Lion's Mane", ours: '1,000mg\nbuilt for mental clarity', theirs: '0mg\njust caffeine' },
+        { name: 'Caffeine', ours: '~23mg\nsteady, no crash', theirs: '48–90mg+\nspikes, then crashes' },
+        { name: 'Taurine + L-Theanine + L-Tyrosine', ours: 'Full stack\ncalm focus, no jitters', theirs: 'None\njust caffeine and hope' },
+        { name: 'Full label transparency', ours: 'Every mg disclosed', theirs: 'Hidden in proprietary blends' },
+      ],
+      reviews: [
+        { text: "Regular coffee used to wreck my stomach after cup two. This doesn't.", name: 'Marco V., 39', role: 'Remote Consultant', initials: 'MV' },
+        { text: 'Replaced my pre-workout and my afternoon coffee with this. One less thing to think about.', name: 'Tyler S., 29', role: 'Software Engineer', initials: 'TS' },
+        { text: "I can finally have a second cup without my hands shaking through a client call.", name: 'Dave H., 41', role: 'Sales Director', initials: 'DH' },
+        { text: "No more afternoon crash, no more acid reflux. Didn't think that combo existed.", name: 'Chris N., 36', role: 'Operations Manager', initials: 'CN' },
+      ],
+      customerPhotoIds: ['cust-photo-1','cust-photo-2','cust-photo-3','cust-photo-4','cust-photo-5','cust-photo-6','cust-photo-7','cust-photo-8'],
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      emailValue: this.state.email,
+      handleEmailInput: this.handleEmailInput,
+      handleSubmit: this.handleSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
