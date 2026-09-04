@@ -38,7 +38,7 @@ a:hover{color:#7ED4E8}
 
   <!-- BLOCK 1: HERO -->
   <div style="position: relative; min-height: 900px; display: flex; flex-direction: column; overflow: hidden; background: #0D0D0D">
-    <img src="uploads/ChatGPT Image 25 серп. 2026 р., 14_31_18.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
+    <img src="assets/hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
     
     <div style="position: absolute; inset: 0; background: linear-gradient(90deg,#0D0D0D 0%,#0D0D0D 46%,rgba(13,13,13,.7) 54%,transparent 64%); left: -192px; top: 4px"></div>
 
@@ -136,9 +136,16 @@ a:hover{color:#7ED4E8}
   <!-- CUSTOMER PHOTOS -->
   <div style="max-width:1440px;margin:0 auto;padding:0 64px 56px">
     <div class="rg-scroll" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px">
-      <sc-for list="{{ customerPhotoIds }}" as="pid" hint-placeholder-count="8">
-        <image-slot id="{{ pid }}" shape="rounded" radius="14" placeholder="Customer photo" style="flex:none;width:260px;height:320px;scroll-snap-align:start"></image-slot>
-      </sc-for>
+
+      <img src="assets/cust-photo-1.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-2.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-3.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-4.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-5.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-6.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-7.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+      <img src="assets/cust-photo-8.png" alt="" style="flex:none;width:260px;height:320px;object-fit:cover;border-radius:14px;scroll-snap-align:start">
+
     </div>
   </div>
 
@@ -171,7 +178,7 @@ a:hover{color:#7ED4E8}
         <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
         <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">"I drink this before lifting and again mid-afternoon at my desk. No jitters, no stomach issues — just steady focus."</div>
         <div style="display:flex;align-items:center;gap:12px">
-          <image-slot id="avatar-featured" shape="circle" style="width:56px;height:56px;flex:none" placeholder="Photo"></image-slot>
+          <img src="assets/avatar-0.png" alt="" style="width:56px;height:56px;flex:none;object-fit:cover;border-radius:50%">
           <div style="min-width:0">
             <div style="font-size:13px;font-weight:700;white-space:nowrap">Ryan D., 33</div>
             <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Product Manager &amp; weekend lifter</div>

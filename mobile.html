@@ -38,7 +38,7 @@ a:hover{color:#7ED4E8}
 
   <!-- BLOCK 1: HERO -->
   <div style="position:relative;min-height:560px;display:flex;flex-direction:column;overflow:hidden;background:#0D0D0D">
-    <img src="uploads/ChatGPT Image 25 серп. 2026 р., 14_31_18.png" alt="" style="position: absolute; inset: 0; width: 505px; height: 580px; object-fit: cover; object-position: 70% 20%">
+    <img src="assets/hero.png" alt="" style="position:absolute;inset:0;width:505px;height:580px;object-fit:cover;object-position:70% 20%">
     
 
     <div style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 18px 18px 24px; width: 387px; height: 550px">
@@ -125,9 +125,16 @@ a:hover{color:#7ED4E8}
   <!-- CUSTOMER PHOTOS -->
   <div style="padding:0 18px 28px">
     <div class="rg-scroll" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px">
-      <sc-for list="{{ customerPhotoIds }}" as="pid" hint-placeholder-count="8">
-        <image-slot id="{{ pid }}" shape="rounded" radius="12" placeholder="Customer photo" style="flex:none;width:160px;height:200px;scroll-snap-align:start"></image-slot>
-      </sc-for>
+
+      <img src="assets/cust-photo-1.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-2.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-3.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-4.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-5.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-6.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-7.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+      <img src="assets/cust-photo-8.png" alt="" style="flex:none;width:160px;height:200px;object-fit:cover;border-radius:12px;scroll-snap-align:start">
+
     </div>
   </div>
 
