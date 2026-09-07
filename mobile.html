@@ -365,47 +365,6 @@ class Component extends DCLogic {
       });
     };
 
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          landing: 'men3',
-          source,
-          creative
-        })
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Subscription failed');
-      }
-
-      this.setState({ submitted: true });
-
-      if (typeof window.rawGravityTrackTikTokLead === 'function') {
-        window.rawGravityTrackTikTokLead();
-      }
-
-      if (typeof window.rawGravityTrackMetaLead === 'function') {
-        window.rawGravityTrackMetaLead();
-      }
-
-      setTimeout(() => {
-        window.location.href =
-          AMAZON_URLS[source] ||
-          AMAZON_URLS.meta;
-      }, 1500);
-
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('Something went wrong. Please try again.');
-    }
-  };
-
   renderVals() {
     const s = this.state.secondsLeft;
     const mm = String(Math.floor(s / 60)).padStart(2, '0');
