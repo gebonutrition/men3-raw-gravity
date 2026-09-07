@@ -311,7 +311,7 @@ class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this._interval); }
 
   handleEmailInput = (e) => this.setState({ email: e.target.value });
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
       e.preventDefault();
 
       const email = this.state.email.trim();
@@ -323,29 +323,26 @@ class Component extends DCLogic {
       const params = new URLSearchParams(window.location.search);
 
       const source = (
-        params.get('source') ||
-        'meta'
+        params.get('source') || 'meta'
       ).toLowerCase();
 
       const creative =
-        params.get('creative') ||
-        'unknown';
+        params.get('creative') || 'unknown';
 
-      try {
-        const response = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email,
-            landing: 'men3',
-            source,
-            creative
-          })
-        });
-
-        if (!response.ok) {
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          landing: 'men3',
+          source: source,
+          creative: creative
+        })
+      })
+      .then((res) => {
+        if (!res.ok) {
           throw new Error('Subscribe failed');
         }
 
@@ -360,17 +357,12 @@ class Component extends DCLogic {
           instagram: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
         };
 
-        const amazonUrl = AMAZON_URLS[source] || AMAZON_URLS.meta;
-
-        window.location.href = amazonUrl;
-
-      } catch (error) {
-        console.error(error);
-
-        this.setState({
-          submitError: true
-        });
-      }
+        window.location.href =
+          AMAZON_URLS[source] || AMAZON_URLS.meta;
+      })
+      .catch((error) => {
+        console.error('Subscribe error:', error);
+      });
     };
 
       const response = await fetch('/api/subscribe', {
@@ -430,11 +422,41 @@ class Component extends DCLogic {
         { icon: { __html: ICON_CALM }, text: 'Lower cortisol, calmer nervous system — energy without the edge' },
       ],
       reviews: [
-        { text: "Regular coffee used to wreck my stomach after cup two. This doesn't.", name: 'Marco V., 39', role: 'Remote Consultant', initials: 'MV' },
-        { text: 'Replaced my pre-workout and my afternoon coffee with this. One less thing to think about.', name: 'Tyler S., 29', role: 'Software Engineer', initials: 'TS' },
-        { text: "I can finally have a second cup without my hands shaking through a client call.", name: 'Dave H., 41', role: 'Sales Director', initials: 'DH' },
-        { text: 'Train at 6am, work until 6pm — this is the only thing keeping me sharp through both.', name: 'Josh P., 27', role: 'Software Engineer & CrossFit', initials: 'JP' },
-        { text: "No more afternoon crash, no more acid reflux. Didn't think that combo existed.", name: 'Chris N., 36', role: 'Operations Manager', initials: 'CN' },
+        {
+          text: "Regular coffee used to wreck my stomach after cup two. This doesn't.",
+          name: 'Marco V., 39',
+          role: 'Remote Consultant',
+          initials: 'MV',
+          avatar: 'assets/avatar-1.png'
+        },
+        {
+          text: 'Replaced my pre-workout and my afternoon coffee with this. One less thing to think about.',
+          name: 'Tyler S., 29',
+          role: 'Software Engineer',
+          initials: 'TS',
+          avatar: 'assets/avatar-2.png'
+        },
+        {
+          text: "I can finally have a second cup without my hands shaking through a client call.",
+          name: 'Dave H., 41',
+          role: 'Sales Director',
+          initials: 'DH',
+          avatar: 'assets/avatar-3.png'
+        },
+        {
+          text: 'Train at 6am, work until 6pm — this is the only thing keeping me sharp through both.',
+          name: 'Josh P., 27',
+          role: 'Software Engineer & CrossFit',
+          initials: 'JP',
+          avatar: ''
+        },
+        {
+          text: "No more afternoon crash, no more acid reflux. Didn't think that combo existed.",
+          name: 'Chris N., 36',
+          role: 'Operations Manager',
+          initials: 'CN',
+          avatar: ''
+        }
       ],
       customerPhotoIds: ['cust-photo-1','cust-photo-2','cust-photo-3','cust-photo-4','cust-photo-5','cust-photo-6','cust-photo-7','cust-photo-8'],
       submitted: this.state.submitted,

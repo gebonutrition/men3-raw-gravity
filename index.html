@@ -344,7 +344,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { clearInterval(this._interval); }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
       e.preventDefault();
 
       const email = this.state.email.trim();
@@ -356,29 +356,26 @@ class Component extends DCLogic {
       const params = new URLSearchParams(window.location.search);
 
       const source = (
-        params.get('source') ||
-        'meta'
+        params.get('source') || 'meta'
       ).toLowerCase();
 
       const creative =
-        params.get('creative') ||
-        'unknown';
+        params.get('creative') || 'unknown';
 
-      try {
-        const response = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email,
-            landing: 'men3',
-            source,
-            creative
-          })
-        });
-
-        if (!response.ok) {
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          landing: 'men3',
+          source: source,
+          creative: creative
+        })
+      })
+      .then((res) => {
+        if (!res.ok) {
           throw new Error('Subscribe failed');
         }
 
@@ -393,17 +390,12 @@ class Component extends DCLogic {
           instagram: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
         };
 
-        const amazonUrl = AMAZON_URLS[source] || AMAZON_URLS.meta;
-
-        window.location.href = amazonUrl;
-
-      } catch (error) {
-        console.error(error);
-
-        this.setState({
-          submitError: true
-        });
-      }
+        window.location.href =
+          AMAZON_URLS[source] || AMAZON_URLS.meta;
+      })
+      .catch((error) => {
+        console.error('Subscribe error:', error);
+      });
     };
 
       const response = await fetch('/api/subscribe', {
