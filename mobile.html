@@ -228,7 +228,10 @@ a:hover{color:#7ED4E8}
       </sc-if>
       <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
         <form onsubmit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:10px;width:100%">
-          <input type="email" required="{{ true }}" placeholder="you@email.com" value="{{ emailValue }}" oninput="{{ handleEmailInput }}" style="width:100%;background:#161616;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:14px 18px;font-size:14px;color:#F5F5F5;font-family:Archivo,sans-serif;text-align:center">
+          <input type="email"
+          required="{{ true }}"
+          placeholder="you@email.com"
+          style="width:100%;background:#161616;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:16px 22px;font-size:15px;color:#F5F5F5;font-family:Archivo,sans-serif;text-align:center">
           <button type="submit" style="display:flex;align-items:stretch;border:none;border-radius:999px;overflow:hidden;padding:0;font-size:14px;font-weight:800;cursor:pointer;width:100%" style-hover="opacity:.88">
             <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;justify-content:center;padding:14px 16px;text-transform:lowercase;flex:none">amazon</span>
             <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;justify-content:center;padding:14px 16px;flex:1;white-space:nowrap">Buy Now on Amazon -25%</span>
@@ -309,11 +312,11 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { clearInterval(this._interval); }
 
-  handleEmailInput = (e) => this.setState({ email: e.target.value });
   handleSubmit = (e) => {
       e.preventDefault();
 
-      const email = this.state.email.trim();
+      const input = e.currentTarget.querySelector('input[type="email"]');
+      const email = input ? input.value.trim() : '';
 
       if (!email || !email.includes('@')) {
         return;
@@ -406,7 +409,6 @@ class Component extends DCLogic {
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
       emailValue: this.state.email,
-      handleEmailInput: this.handleEmailInput,
       handleSubmit: this.handleSubmit,
     };
   }
