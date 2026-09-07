@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  if (window.innerWidth <= 768) {
+    window.location.replace('./mobile.html' + window.location.search);
+  }
+})();
+</script>
 <script src="./support.js"></script>
 <script src="./pixel.js"></script>
 <script src="./fbpixel.js"></script>
@@ -30,7 +37,19 @@ a:hover{color:#7ED4E8}
 
   <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:rgba(13,13,13,.85);backdrop-filter:blur(8px)">
     <div style="font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase">Raw Gravity</div>
-    <a href="#email-capture" style="display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:13px;font-weight:800;letter-spacing:.3px" style-hover="opacity:.88">
+    <a href="#email-capture"
+      style="display:flex;align-items:stretch;border-radius:999px;overflow:hidden;font-size:12px;font-weight:800;width:100%"
+      style-hover="opacity:.88">
+
+      <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;justify-content:center;padding:11px 16px;text-transform:lowercase;flex:none">
+        amazon
+      </span>
+
+      <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;justify-content:center;padding:11px 16px;flex:1;white-space:nowrap">
+        Buy Now on Amazon -25%
+      </span>
+
+    </a>
       <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;padding:11px 20px;text-transform:lowercase">amazon</span>
       <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;padding:11px 20px;white-space:nowrap">Buy Now on Amazon -25%</span>
     </a>
@@ -191,7 +210,17 @@ a:hover{color:#7ED4E8}
           <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
           <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">"{{ r.text }}"</div>
           <div style="display:flex;align-items:center;gap:12px">
-            <image-slot id="avatar-{{ $index }}" shape="circle" style="width:56px;height:56px;flex:none" placeholder="Photo"></image-slot>
+            <sc-if value="{{ r.avatar }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ r.avatar }}"
+                alt=""
+                style="width:56px;height:56px;flex:none;border-radius:50%;object-fit:cover">
+          </sc-if>
+
+          <sc-if value="{{ r.avatar === '' }}" hint-placeholder-val="{{ false }}">
+            <div style="width:56px;height:56px;flex:none;border-radius:50%;background:#1A1A1A;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#9A9A9A">
+              {{ r.initials }}
+            </div>
+          </sc-if>
             <div style="min-width:0">
               <div style="font-size:13px;font-weight:700;white-space:nowrap">{{ r.name }}</div>
               <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.role }}</div>
@@ -292,7 +321,12 @@ const ICON_DUMBBELL = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" str
 const ICON_CALM = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M22 6c8 6 12 12 12 18a12 12 0 0 1-24 0c0-6 4-12 12-18z" stroke-linejoin="round"/><path d="M17 26a5 5 0 0 0 10 0" stroke-linecap="round"/></svg>`;
 
 class Component extends DCLogic {
-  state = { email: '', submitted: false, secondsLeft: 3600 };
+  state = {
+  email: '',
+  submitted: false,
+  submitError: false,
+  secondsLeft: 3600
+};    
 
   componentDidMount() {
     const key = 'rg_deal_deadline';
@@ -311,34 +345,66 @@ class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this._interval); }
 
   handleSubmit = async (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    const email = String(this.state.email || '').trim();
+      const email = this.state.email.trim();
 
-    if (!email) return;
+      if (!email || !email.includes('@')) {
+        return;
+      }
 
-    try {
       const params = new URLSearchParams(window.location.search);
 
-      const source =
-        params.get('source')?.trim().toLowerCase() || 'direct';
+      const source = (
+        params.get('source') ||
+        'meta'
+      ).toLowerCase();
 
       const creative =
-        params.get('creative')?.trim() || 'unknown';
+        params.get('creative') ||
+        'unknown';
 
-      const AMAZON_URLS = {
-        tiktok:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            landing: 'men3',
+            source,
+            creative
+          })
+        });
 
-        meta:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas',
+        if (!response.ok) {
+          throw new Error('Subscribe failed');
+        }
 
-        klaviyo:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas',
+        if (typeof window.rawGravityTrackLead === 'function') {
+          window.rawGravityTrackLead();
+        }
 
-        instagram:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
-      };
+        const AMAZON_URLS = {
+          tiktok: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
+          meta: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas',
+          klaviyo: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas',
+          instagram: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
+        };
+
+        const amazonUrl = AMAZON_URLS[source] || AMAZON_URLS.meta;
+
+        window.location.href = amazonUrl;
+
+      } catch (error) {
+        console.error(error);
+
+        this.setState({
+          submitError: true
+        });
+      }
+    };
 
       const response = await fetch('/api/subscribe', {
         method: 'POST',
@@ -404,10 +470,34 @@ class Component extends DCLogic {
         { name: 'Full label transparency', ours: 'Every mg disclosed', theirs: 'Hidden in proprietary blends' },
       ],
       reviews: [
-        { text: "Regular coffee used to wreck my stomach after cup two. This doesn't.", name: 'Marco V., 39', role: 'Remote Consultant', initials: 'MV' },
-        { text: 'Replaced my pre-workout and my afternoon coffee with this. One less thing to think about.', name: 'Tyler S., 29', role: 'Software Engineer', initials: 'TS' },
-        { text: "I can finally have a second cup without my hands shaking through a client call.", name: 'Dave H., 41', role: 'Sales Director', initials: 'DH' },
-        { text: "No more afternoon crash, no more acid reflux. Didn't think that combo existed.", name: 'Chris N., 36', role: 'Operations Manager', initials: 'CN' },
+        {
+          text: "Regular coffee used to wreck my stomach after cup two. This doesn't.",
+          name: 'Marco V., 39',
+          role: 'Remote Consultant',
+          initials: 'MV',
+          avatar: 'assets/avatar-1.png'
+        },
+        {
+          text: 'Replaced my pre-workout and my afternoon coffee with this. One less thing to think about.',
+          name: 'Tyler S., 29',
+          role: 'Software Engineer',
+          initials: 'TS',
+          avatar: 'assets/avatar-2.png'
+        },
+        {
+          text: "I can finally have a second cup without my hands shaking through a client call.",
+          name: 'Dave H., 41',
+          role: 'Sales Director',
+          initials: 'DH',
+          avatar: 'assets/avatar-3.png'
+        },
+        {
+          text: "No more afternoon crash, no more acid reflux. Didn't think that combo existed.",
+          name: 'Chris N., 36',
+          role: 'Operations Manager',
+          initials: 'CN',
+          avatar: ''
+        },
       ],
       customerPhotoIds: ['cust-photo-1','cust-photo-2','cust-photo-3','cust-photo-4','cust-photo-5','cust-photo-6','cust-photo-7','cust-photo-8'],
       submitted: this.state.submitted,

@@ -165,7 +165,9 @@ a:hover{color:#7ED4E8}
       <div style="color:#55C6E0;letter-spacing:1.5px;font-size:13px">★★★★★</div>
       <div style="font-size:17px;line-height:1.5;font-weight:500">"I drink this before lifting and again mid-afternoon at my desk. No jitters, no stomach issues — just steady focus."</div>
       <div style="display:flex;align-items:center;gap:12px">
-        <image-slot id="avatar-featured" shape="circle" style="width:52px;height:52px;flex:none" placeholder="Photo"></image-slot>
+        <img src="assets/avatar-0.png"
+        alt=""
+        style="width:52px;height:52px;flex:none;border-radius:50%;object-fit:cover">
         <div>
           <div style="font-size:14px;font-weight:700">Ryan D., 33</div>
           <div style="font-size:12px;color:#9A9A9A">Product Manager &amp; weekend lifter · ✓ Verified Amazon buyer</div>
@@ -179,7 +181,17 @@ a:hover{color:#7ED4E8}
           <div style="color:#55C6E0;letter-spacing:1px;font-size:12px">★★★★★</div>
           <div style="font-size:14px;line-height:1.5;color:#F5F5F5">"{{ r.text }}"</div>
           <div style="display:flex;align-items:center;gap:10px">
-            <image-slot id="avatar-{{ $index }}" shape="circle" style="width:44px;height:44px;flex:none" placeholder="Photo"></image-slot>
+            <sc-if value="{{ r.avatar }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ r.avatar }}"
+                alt=""
+                style="width:44px;height:44px;flex:none;border-radius:50%;object-fit:cover">
+          </sc-if>
+
+          <sc-if value="{{ r.avatar === '' }}" hint-placeholder-val="{{ false }}">
+            <div style="width:44px;height:44px;flex:none;border-radius:50%;background:#1A1A1A;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9A9A9A">
+              {{ r.initials }}
+            </div>
+          </sc-if>
             <div>
               <div style="font-size:13px;font-weight:700">{{ r.name }}</div>
               <div style="font-size:12px;color:#9A9A9A">{{ r.role }}</div>
@@ -275,7 +287,12 @@ const ICON_DUMBBELL = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" str
 const ICON_CALM = `<svg viewBox="0 0 44 44" fill="none" stroke="#55C6E0" stroke-width="1.4"><path d="M22 6c8 6 12 12 12 18a12 12 0 0 1-24 0c0-6 4-12 12-18z" stroke-linejoin="round"/><path d="M17 26a5 5 0 0 0 10 0" stroke-linecap="round"/></svg>`;
 
 class Component extends DCLogic {
-  state = { email: '', submitted: false, secondsLeft: 3600 };
+  state = {
+  email: '',
+  submitted: false,
+  submitError: false,
+  secondsLeft: 3600
+};
 
   componentDidMount() {
     const key = 'rg_deal_deadline';
@@ -295,34 +312,66 @@ class Component extends DCLogic {
 
   handleEmailInput = (e) => this.setState({ email: e.target.value });
   handleSubmit = async (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    const email = String(this.state.email || '').trim();
+      const email = this.state.email.trim();
 
-    if (!email) return;
+      if (!email || !email.includes('@')) {
+        return;
+      }
 
-    try {
       const params = new URLSearchParams(window.location.search);
 
-      const source =
-        params.get('source')?.trim().toLowerCase() || 'direct';
+      const source = (
+        params.get('source') ||
+        'meta'
+      ).toLowerCase();
 
       const creative =
-        params.get('creative')?.trim() || 'unknown';
+        params.get('creative') ||
+        'unknown';
 
-      const AMAZON_URLS = {
-        tiktok:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            landing: 'men3',
+            source,
+            creative
+          })
+        });
 
-        meta:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas',
+        if (!response.ok) {
+          throw new Error('Subscribe failed');
+        }
 
-        klaviyo:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas',
+        if (typeof window.rawGravityTrackLead === 'function') {
+          window.rawGravityTrackLead();
+        }
 
-        instagram:
-          'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
-      };
+        const AMAZON_URLS = {
+          tiktok: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
+          meta: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas',
+          klaviyo: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas',
+          instagram: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas'
+        };
+
+        const amazonUrl = AMAZON_URLS[source] || AMAZON_URLS.meta;
+
+        window.location.href = amazonUrl;
+
+      } catch (error) {
+        console.error(error);
+
+        this.setState({
+          submitError: true
+        });
+      }
+    };
 
       const response = await fetch('/api/subscribe', {
         method: 'POST',
