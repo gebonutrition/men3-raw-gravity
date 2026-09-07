@@ -176,30 +176,67 @@ a:hover{color:#7ED4E8}
     </div>
 
     <div style="display:grid;grid-template-columns:1fr;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
-      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="5">
-        <div style="background:#0D0D0D;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
-          <div style="color:#55C6E0;letter-spacing:1px;font-size:12px">★★★★★</div>
-          <div style="font-size:14px;line-height:1.5;color:#F5F5F5">"{{ r.text }}"</div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <sc-if value="{{ r.avatar }}" hint-placeholder-val="{{ false }}">
-            <img src="{{ r.avatar }}"
-                alt=""
-                style="width:44px;height:44px;flex:none;border-radius:50%;object-fit:cover">
-          </sc-if>
-
-          <sc-if value="{{ r.avatar === '' }}" hint-placeholder-val="{{ false }}">
-            <div style="width:44px;height:44px;flex:none;border-radius:50%;background:#1A1A1A;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9A9A9A">
-              {{ r.initials }}
-            </div>
-          </sc-if>
-            <div>
-              <div style="font-size:13px;font-weight:700">{{ r.name }}</div>
-              <div style="font-size:12px;color:#9A9A9A">{{ r.role }}</div>
-              <div style="font-size:11px;color:#55C6E0;margin-top:2px">✓ Verified Amazon buyer</div>
-            </div>
-          </div>
+    <div style="background:#0D0D0D;padding:22px 20px;display:flex;flex-direction:column;gap:14px;height:300px">
+      <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+      <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">
+        "Regular coffee used to wreck my stomach after cup two. This doesn't."
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/avatar-1.png" alt="" style="width:44px;height:44px;flex:none;object-fit:cover;border-radius:50%">
+        <div style="min-width:0">
+          <div style="font-size:13px;font-weight:700;white-space:nowrap">Marco V., 39</div>
+          <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Remote Consultant</div>
+          <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
         </div>
-      </sc-for>
+      </div>
+    </div>
+
+    <div style="background:#0D0D0D;padding:22px 20px;display:flex;flex-direction:column;gap:14px;height:300px">
+      <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+      <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">
+        "Replaced my pre-workout and my afternoon coffee with this. One less thing to think about."
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/avatar-2.png" alt="" style="width:44px;height:44px;flex:none;object-fit:cover;border-radius:50%">
+        <div style="min-width:0">
+          <div style="font-size:13px;font-weight:700;white-space:nowrap">Tyler S., 29</div>
+          <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Software Engineer</div>
+          <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0D0D0D;padding:22px 20px;display:flex;flex-direction:column;gap:14px;height:300px">
+      <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+      <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">
+        "I can finally have a second cup without my hands shaking through a client call."
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/avatar-3.png" alt="" style="width:44px;height:44px;flex:none;object-fit:cover;border-radius:50%">
+        <div style="min-width:0">
+          <div style="font-size:13px;font-weight:700;white-space:nowrap">Dave H., 41</div>
+          <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sales Director</div>
+          <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0D0D0D;padding:22px 20px;display:flex;flex-direction:column;gap:14px;height:300px">
+      <div style="color:#55C6E0;letter-spacing:1.5px;font-size:12px">★★★★★</div>
+      <div style="font-size:14px;line-height:1.5;color:#F5F5F5;flex:1;overflow:hidden">
+        "No more afternoon crash, no more acid reflux. Didn't think that combo existed."
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:44px;height:44px;flex:none;border-radius:50%;background:#1A1A1A;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#9A9A9A">
+          CN
+        </div>
+        <div style="min-width:0">
+          <div style="font-size:13px;font-weight:700;white-space:nowrap">Chris N., 36</div>
+          <div style="font-size:12px;color:#9A9A9A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Operations Manager</div>
+          <div style="font-size:11px;color:#55C6E0;margin-top:4px;white-space:nowrap">✓ Verified Amazon buyer</div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 
