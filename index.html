@@ -121,6 +121,7 @@ a:hover{color:#7ED4E8}
         </div>
       </div>
       <div style="padding:26px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.1)">
+        <span style="color:#55C6E0;font-size:13px">☕</span>
         <div style="font-size:26px;font-weight:900;color:#F5F5F5;line-height:1">~23mg</div>
         <div style="font-size:11px;letter-spacing:1.5px;color:#9A9A9A;margin-top:4px;text-transform:uppercase">Caffeine</div>
       </div>
@@ -284,97 +285,87 @@ a:hover{color:#7ED4E8}
   </div>
 
   <!-- BLOCK 5: EMAIL CAPTURE -->
-  <div id="email-capture" style="background:#161616;padding:80px 48px">
+  <div id="email-capture" style="background:#161616;padding:80px 24px 96px">
 
-    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center">
+    <div style="box-sizing:border-box;width:100%;max-width:412px;margin:0 auto;background:#0D0D0D;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 34px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
 
-      <!-- PRODUCT IMAGE -->
-      <div style="position:relative;border-radius:24px;overflow:hidden;aspect-ratio:1/1;background:#0D0D0D;border:1px solid rgba(255,255,255,.08)">
-        <img src="assets/hero.png" alt="Raw Gravity Coffee+" style="width:100%;height:100%;object-fit:cover;display:block">
-      </div>
+      <!-- HEADING -->
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
 
-      <!-- OFFER AND EMAIL FORM -->
-      <div style="min-width:0;display:flex;flex-direction:column;gap:24px">
+        <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:18px">
 
-        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:20px">
+          <h2 style="width:100%;margin:0;font-size:27px;font-weight:800;text-transform:uppercase;letter-spacing:-.4px;line-height:1.2;color:#F5F5F5">
+            Get -48% on your first order
+          </h2>
 
-            <!-- HEADING -->
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <h2 style="margin:0;font-size:36px;font-weight:800;text-transform:uppercase;letter-spacing:-.5px;line-height:1.15;color:#F5F5F5">Get -48% on your first order</h2>
+          <!-- OFFER CARD -->
+          <div style="box-sizing:border-box;width:100%;background:#161616;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;align-items:center;gap:6px">
 
-              <p style="margin:0;font-size:16px;line-height:1.5;color:#9A9A9A">Enter your email to unlock your discount.</p>
-            </div>
+            <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap">
 
-            <!-- OFFER CARD -->
-            <div style="background:#0D0D0D;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;width:100%">
+              <span style="font-size:26px;line-height:1;font-weight:900;color:#55C6E0">
+                $19.70
+              </span>
 
-              <div style="display:flex;flex-direction:column;gap:12px;padding:20px 22px">
+              <span style="font-size:11px;line-height:1;color:#6b6b6b;text-decoration:line-through">
+                $37.70
+              </span>
 
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-                  <span style="background:#55C6E0;color:#0D0D0D;font-size:11px;font-weight:800;letter-spacing:.08em;padding:6px 10px;border-radius:6px">LIMITED</span>
-
-                  <span style="font-size:13px;color:#9A9A9A">Lowest price ever</span>
-                </div>
-
-                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-                  <span style="font-size:44px;line-height:1;font-weight:900;color:#55C6E0">$19.70</span>
-
-                  <span style="font-size:20px;line-height:1;color:#6b6b6b;text-decoration:line-through">$37.70</span>
-
-                  <span style="background:#F5F5F5;color:#0D0D0D;font-size:13px;font-weight:800;padding:6px 10px;border-radius:6px;margin-left:auto">-48%</span>
-                </div>
-
-              </div>
-
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.1);background:#161616;padding:14px 22px">
-
-                <span style="font-size:13px;color:#9A9A9A">Your -48% off expires in:</span>
-
-                <span style="font-size:18px;line-height:1;font-weight:700;color:#55C6E0;font-variant-numeric:tabular-nums">{{ timerMin }}:{{ timerSec }}</span>
-
-              </div>
+              <span style="background:#e0824a;color:#fff;font-size:10px;line-height:1;font-weight:800;padding:4px 7px;border-radius:999px">
+                -48%
+              </span>
 
             </div>
 
-            <!-- EMAIL FORM -->
-            <form onsubmit="{{ handleSubmit }}" style="display:flex;gap:12px;flex-wrap:wrap;margin:0">
-
-              <input
-                type="email"
-                required="{{ true }}"
-                placeholder="you@email.com"
-                style="flex:1;min-width:180px;box-sizing:border-box;background:#0D0D0D;border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:16px 20px;font-size:15px;color:#F5F5F5;font-family:Archivo,sans-serif"
-              >
-
-              <button type="submit" style="display:flex;align-items:stretch;border:none;border-radius:10px;overflow:hidden;padding:0;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="opacity:.88">
-
-                <span style="background:#141414;color:#F5F5F5;display:flex;align-items:center;justify-content:center;padding:16px 18px;text-transform:lowercase">amazon</span>
-
-                <span style="background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;display:flex;align-items:center;justify-content:center;padding:16px 20px;white-space:nowrap">Buy Now on Amazon -48%</span>
-
-              </button>
-
-            </form>
-
-            <p style="margin:0;font-size:13px;line-height:1.5;color:#9A9A9A">No spam · No subscription required · Cancel anytime</p>
+            <div style="font-size:9px;line-height:1.4;color:#9A9A9A">
+              Limited price — the lowest it's ever been
+            </div>
 
           </div>
-        </sc-if>
 
-        <!-- SUBMISSION FEEDBACK -->
-        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-          <div style="background:rgba(85,198,224,.12);border:1px solid #55C6E0;border-radius:14px;padding:22px 24px;font-size:16px;font-weight:600;line-height:1.5;color:#55C6E0">
-            ✓ Code sent to {{ emailValue }} — check your inbox.
-          </div>
-        </sc-if>
+          <!-- EMAIL FORM -->
+          <form onsubmit="{{ handleSubmit }}" style="width:100%;display:flex;flex-direction:column;gap:10px;margin:0">
 
-        <!-- TRUST BADGES -->
-        <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#9A9A9A">
-          <span>🛡 30-day money-back</span>
-          <span>🚚 Free US shipping</span>
-          <span>🔒 Secure checkout</span>
+            <input
+              type="email"
+              required="{{ true }}"
+              placeholder="you@email.com"
+              style="box-sizing:border-box;width:100%;min-width:0;background:#161616;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:12px 16px;font-size:12px;line-height:1.2;color:#F5F5F5;font-family:Archivo,sans-serif;text-align:center"
+            >
+
+            <button
+              type="submit"
+              style="box-sizing:border-box;width:100%;border:none;border-radius:999px;background:linear-gradient(90deg,#e0824a,#b8511f);color:#fff;padding:13px 16px;font-family:Archivo,sans-serif;font-size:12px;font-weight:800;cursor:pointer"
+              style-hover="opacity:.88"
+            >
+              Get my discount →
+            </button>
+
+          </form>
+
+          <p style="margin:0;font-size:10px;line-height:1.5;color:#9A9A9A">
+            No spam · No subscription required · Cancel anytime
+          </p>
+
         </div>
+
+      </sc-if>
+
+      <!-- SUBMISSION FEEDBACK -->
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+
+        <div style="width:100%;background:rgba(85,198,224,.12);border:1px solid #55C6E0;border-radius:14px;padding:18px 16px;font-size:13px;font-weight:600;line-height:1.5;color:#55C6E0">
+          ✓ Code sent to {{ emailValue }} — check your inbox.
+        </div>
+
+      </sc-if>
+
+      <!-- TRUST BADGES -->
+      <div style="box-sizing:border-box;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:10px;line-height:1.5;color:#9A9A9A">
+
+        <span>🛡 30-day money-back</span>
+        <span>🚚 Free US shipping</span>
+        <span>🔒 Secure checkout</span>
 
       </div>
 
