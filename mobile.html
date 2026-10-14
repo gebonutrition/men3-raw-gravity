@@ -313,18 +313,28 @@ a:hover{color:#7ED4E8}
   <div id="email-capture" style="background:#161616;padding:48px 18px">
     <div style="background:#0D0D0D;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <h2 style="margin:0;font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:-.3px;line-height:1.2">Get 48% off before your next cup</h2>
-        <p style="margin:0;font-size:14px;color:#9A9A9A">Enter your email. Code sent instantly.</p>
+        <h2 style="margin:0;font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:-.3px;line-height:1.2">Get -48% on your first order</h2>
+        <p style="margin:0;font-size:14px;color:#9A9A9A">Enter your email to unlock your discount.</p>
       </div>
 
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 18px;width:100%">
-        <span style="display:flex;align-items:baseline;gap:8px;font-size:15px">
-          <span style="color:#6b6b6b;text-decoration:line-through">$37.70</span>
-          <span style="color:#55C6E0;font-weight:800;font-size:20px">$19.70</span>
-        </span>
-        <span style="font-size:12px;color:#9A9A9A;display:flex;align-items:center;gap:6px">
-          Ends in <span style="color:#F5F5F5;font-weight:700;font-variant-numeric:tabular-nums">{{ timerMin }}:{{ timerSec }}</span>
-        </span>
+      <div style="display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;width:100%">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <span style="background:#55C6E0;color:#0D0D0D;font-size:10px;font-weight:800;letter-spacing:.08em;padding:5px 8px;border-radius:5px">LIMITED</span>
+          <span style="font-size:11px;color:#9A9A9A">Lowest price ever</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span style="font-size:30px;line-height:1;font-weight:900;color:#55C6E0">$19.70</span>
+          <span style="font-size:15px;line-height:1;color:#6b6b6b;text-decoration:line-through">$37.70</span>
+          <span style="background:#F5F5F5;color:#0D0D0D;font-size:11px;font-weight:800;padding:5px 8px;border-radius:5px;margin-left:auto">-48%</span>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid rgba(255,255,255,.1);padding-top:10px">
+          <span style="font-size:11px;color:#9A9A9A">Your -48% off expires in:</span>
+          <span style="font-size:14px;line-height:1;color:#55C6E0;font-weight:700;font-variant-numeric:tabular-nums">{{ timerMin }}:{{ timerSec }}</span>
+        </div>
+
       </div>
 
       <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
