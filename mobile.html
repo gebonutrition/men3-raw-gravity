@@ -8,6 +8,16 @@
 <script src="./fbpixel.js"></script>
 </head>
 <body>
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=1632582321547641&amp;ev=PageView&amp;noscript=1"
+      alt=""
+    >
+  </noscript>
+
 <x-dc>
 
 <helmet data-dc-atomics="">
@@ -385,9 +395,13 @@ class Component extends DCLogic {
           throw new Error('Subscribe failed');
         }
 
-        if (typeof window.rawGravityTrackLead === 'function') {
-          window.rawGravityTrackLead();
-        }
+       if (typeof window.rawGravityTrackTikTokLead === 'function') {
+        window.rawGravityTrackTikTokLead();
+      }
+
+      if (typeof window.rawGravityTrackMetaLead === 'function') {
+        window.rawGravityTrackMetaLead();
+      }
 
         const AMAZON_URLS = {
           tiktok: 'https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas',
